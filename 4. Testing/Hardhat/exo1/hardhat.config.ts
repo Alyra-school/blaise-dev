@@ -34,18 +34,5 @@ export default defineConfig({
       url: configVariable("SEPOLIA_RPC_URL"),
       accounts: [configVariable("SEPOLIA_PRIVATE_KEY")],
     },
-    polygonPos: {
-      type: "http",
-      chainType: "l1",
-      url: configVariable("POLYGON_RPC_URL"),
-      accounts: [configVariable("POLYGON_PRIVATE_KEY")],
-    },
-     mainnetFork: {
-      type: "edr-simulated",
-      forking: {
-        url: configVariable("MAINNET_INFURA_URl"),
-        blockNumber: 25331895,
-      },
-     },
   },
 });
