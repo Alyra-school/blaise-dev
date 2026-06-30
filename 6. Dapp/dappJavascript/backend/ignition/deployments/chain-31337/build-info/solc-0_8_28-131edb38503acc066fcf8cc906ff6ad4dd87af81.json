@@ -1,0 +1,49 @@
+{
+  "_format": "hh3-sol-build-info-1",
+  "id": "solc-0_8_28-131edb38503acc066fcf8cc906ff6ad4dd87af81",
+  "solcVersion": "0.8.28",
+  "solcLongVersion": "0.8.28+commit.7893614a",
+  "compilerType": "solc",
+  "toolVersions": {
+    "hardhat": "3.9.0"
+  },
+  "userSourceNameMap": {
+    "contracts/Bank.sol": "project/contracts/Bank.sol"
+  },
+  "input": {
+    "language": "Solidity",
+    "settings": {
+      "evmVersion": "cancun",
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "outputSelection": {
+        "*": {
+          "": [
+            "ast"
+          ],
+          "*": [
+            "abi",
+            "evm.bytecode.linkReferences",
+            "evm.bytecode.object",
+            "evm.bytecode.opcodes",
+            "evm.bytecode.sourceMap",
+            "evm.deployedBytecode.immutableReferences",
+            "evm.deployedBytecode.linkReferences",
+            "evm.deployedBytecode.object",
+            "evm.deployedBytecode.opcodes",
+            "evm.deployedBytecode.sourceMap",
+            "evm.methodIdentifiers"
+          ]
+        }
+      },
+      "remappings": []
+    },
+    "sources": {
+      "project/contracts/Bank.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity 0.8.28;\r\n\r\nerror Bank__NotEnoughFundsProvided();\r\nerror Bank__NotEnoughEthersOnTheSC();\r\nerror Bank__WithdrawFailed();\r\n\r\ncontract Bank {\r\n\r\n    mapping(address => uint256) balances;\r\n\r\n    function sendEthers() external payable {\r\n        if(msg.value < 1 wei) {\r\n            revert Bank__NotEnoughFundsProvided();\r\n        }\r\n        balances[msg.sender] += msg.value;\r\n    }\r\n\r\n    function withdraw(uint256 _amount) external {\r\n        if(_amount > balances[msg.sender]) {\r\n            revert Bank__NotEnoughEthersOnTheSC();\r\n        }\r\n        balances[msg.sender] -= _amount;\r\n        (bool received,) = msg.sender.call{ value: _amount }('');\r\n        if(!received) {\r\n            revert Bank__WithdrawFailed();\r\n        }\r\n    }\r\n\r\n    function getBalanceOfUser(address _user) external view returns(uint256) {\r\n        return balances[_user];\r\n    }\r\n}"
+      }
+    }
+  }
+}

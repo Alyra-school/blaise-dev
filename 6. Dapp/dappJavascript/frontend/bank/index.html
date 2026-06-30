@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank · dApp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-glow"></div>
+
+    <header class="topbar">
+        <div class="brand">
+            <span class="brand-mark">◈</span>
+            <span class="brand-name">EtherBank</span>
+        </div>
+        <button id="connectButton" class="btn btn-ghost btn-connect">
+            <span class="dot"></span>
+            <span class="btn-connect-label">Connecter le wallet</span>
+        </button>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Votre coffre-fort décentralisé</h1>
+            <p>Déposez et retirez vos ETH en toute sécurité, directement depuis votre wallet.</p>
+        </section>
+
+        <section class="balance-card">
+            <span class="balance-label">Solde du compte</span>
+            <div class="balance-amount">
+                <span id="balanceOfUser">—</span><span class="balance-unit">ETH</span>
+            </div>
+            <span class="balance-hint" id="balanceHint">Connectez votre wallet pour voir votre solde</span>
+        </section>
+
+        <div class="grid">
+            <section class="card">
+                <div class="card-head">
+                    <span class="card-icon deposit">↓</span>
+                    <div>
+                        <h2>Déposer</h2>
+                        <p>Ajoutez des ETH à votre coffre</p>
+                    </div>
+                </div>
+                <div class="field">
+                    <input type="number" id="inputSendEthers" placeholder="0.0" min="0" step="0.0001" />
+                    <span class="field-suffix">ETH</span>
+                </div>
+                <button id="buttonSendEthers" class="btn btn-primary" disabled>Déposer des ETH</button>
+            </section>
+
+            <section class="card">
+                <div class="card-head">
+                    <span class="card-icon withdraw">↑</span>
+                    <div>
+                        <h2>Retirer</h2>
+                        <p>Récupérez vos ETH déposés</p>
+                    </div>
+                </div>
+                <div class="field">
+                    <input type="number" id="inputWithdrawEthers" placeholder="0.0" min="0" step="0.0001" />
+                    <span class="field-suffix">ETH</span>
+                </div>
+                <button id="buttonWithdrawEthers" class="btn btn-secondary" disabled>Retirer des ETH</button>
+            </section>
+        </div>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="index.js" type="module"></script>
+</body>
+</html>

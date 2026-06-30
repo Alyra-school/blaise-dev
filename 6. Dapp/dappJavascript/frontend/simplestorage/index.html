@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Storage · dApp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-glow"></div>
+
+    <header class="topbar">
+        <div class="brand">
+            <span class="brand-mark">⛁</span>
+            <span class="brand-name">SimpleStorage</span>
+        </div>
+        <button id="connectButton" class="btn btn-ghost btn-connect">
+            <span class="dot"></span>
+            <span class="btn-connect-label">Connecter le wallet</span>
+        </button>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Stockage on-chain</h1>
+            <p>Enregistrez un nombre sur la blockchain et relisez-le à tout moment.</p>
+        </section>
+
+        <section class="balance-card">
+            <span class="balance-label">Valeur enregistrée</span>
+            <div class="balance-amount">
+                <span id="theNumber">—</span>
+            </div>
+            <button id="getNumber" class="btn btn-secondary btn-inline" disabled>Lire la valeur</button>
+        </section>
+
+        <section class="card card-single">
+            <div class="card-head">
+                <span class="card-icon store">✎</span>
+                <div>
+                    <h2>Définir la valeur</h2>
+                    <p>Écrivez un nouveau nombre dans le contrat</p>
+                </div>
+            </div>
+            <div class="field">
+                <input type="number" id="inputNumber" placeholder="Votre nombre..." />
+            </div>
+            <button id="setNumber" class="btn btn-primary" disabled>Enregistrer le nombre</button>
+        </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="./index.js" type="module"></script>
+</body>
+</html>
