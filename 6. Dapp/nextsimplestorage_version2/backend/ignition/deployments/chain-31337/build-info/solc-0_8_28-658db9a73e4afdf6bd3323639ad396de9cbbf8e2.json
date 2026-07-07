@@ -1,0 +1,49 @@
+{
+  "_format": "hh3-sol-build-info-1",
+  "id": "solc-0_8_28-658db9a73e4afdf6bd3323639ad396de9cbbf8e2",
+  "solcVersion": "0.8.28",
+  "solcLongVersion": "0.8.28+commit.7893614a",
+  "compilerType": "solc",
+  "toolVersions": {
+    "hardhat": "3.9.0"
+  },
+  "userSourceNameMap": {
+    "contracts/SimpleStorage.sol": "project/contracts/SimpleStorage.sol"
+  },
+  "input": {
+    "language": "Solidity",
+    "settings": {
+      "evmVersion": "cancun",
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "outputSelection": {
+        "*": {
+          "": [
+            "ast"
+          ],
+          "*": [
+            "abi",
+            "evm.bytecode.linkReferences",
+            "evm.bytecode.object",
+            "evm.bytecode.opcodes",
+            "evm.bytecode.sourceMap",
+            "evm.deployedBytecode.immutableReferences",
+            "evm.deployedBytecode.linkReferences",
+            "evm.deployedBytecode.object",
+            "evm.deployedBytecode.opcodes",
+            "evm.deployedBytecode.sourceMap",
+            "evm.methodIdentifiers"
+          ]
+        }
+      },
+      "remappings": []
+    },
+    "sources": {
+      "project/contracts/SimpleStorage.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity 0.8.28;\r\n\r\nerror NumberTooBig();\r\n\r\ncontract SimpleStorage {\r\n    uint256 private myNumber;\r\n\r\n    event NumberChanged(address indexed by, uint256 number);\r\n\r\n    function setMyNumber(uint256 _myNumber) external {\r\n        require(_myNumber < 10, NumberTooBig());\r\n        myNumber = _myNumber;\r\n        emit NumberChanged(msg.sender, _myNumber);\r\n    }\r\n\r\n    function getMyNumber() external view returns (uint256) {\r\n        return myNumber;\r\n    }\r\n}"
+      }
+    }
+  }
+}

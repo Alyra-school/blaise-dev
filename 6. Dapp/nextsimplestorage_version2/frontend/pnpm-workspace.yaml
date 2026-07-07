@@ -1,0 +1,7 @@
+allowBuilds:
+  '@reown/appkit': false
+  sharp: false
+  unrs-resolver: false
+ignoredBuiltDependencies:
+  - sharp
+  - unrs-resolver
